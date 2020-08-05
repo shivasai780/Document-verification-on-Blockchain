@@ -22,6 +22,7 @@ class Adduser extends Component {
       errorMessage: "",
 
       minimumvalue: null,
+      //inputvalue:""
     };
 
     this.Capturefile = this.Capturefile.bind(this);
@@ -57,6 +58,24 @@ class Adduser extends Component {
       console.log(this.state.ipfs_hash);
     });
   };
+  /* onSubmittext=async(event)=>{
+    event.preventDefault();
+    const org1 = organization(this.props.address);
+    const accounts = await web3.eth.getAccounts();
+    console.log(this.inputvalue, this.state.contributed);
+    this.setState({ loading: true, errorMessage: "" });
+    try {
+      console.log(org1);
+      await org1.methods
+        .add(this.state.inputvalue)
+        .send({ from: accounts[0], value: Number(this.state.contributed) });
+      Router.pushRoute(`/`);
+    } catch (err) {
+      this.setState({ errorMessage: err.message });
+    }
+    this.setState({ loading: false });
+
+  }*/
   onSubmit = async (event) => {
     event.preventDefault();
     const org1 = organization(this.props.address);
