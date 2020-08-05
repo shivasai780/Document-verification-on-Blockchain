@@ -5,6 +5,7 @@ import web3 from "../../ethereum/web3";
 import Layout from "../../components/layout";
 import { Button, Form, Image, Input, Message } from "semantic-ui-react";
 import { Link, Router } from "../../routes";
+//import { sha256 } from "js-sha256";
 class Adduser extends Component {
   static async getInitialProps(props) {
     console.log(props.query.address);
@@ -39,6 +40,7 @@ class Adduser extends Component {
     event.preventDefault();
     console.log("hii", "hii", "hii", "hii");
     const file = event.target.files[0];
+
     const reader = new window.FileReader();
 
     reader.readAsArrayBuffer(file);
@@ -47,6 +49,7 @@ class Adduser extends Component {
       this.setState({ buffer: Buffer(reader.result) });
       console.log("buffer", this.state.buffer);
     };
+    // console.log("This is hash" + sha256(this.state.buffer));
     await ipfs.files.add(this.state.buffer, (error, result) => {
       console.log(result);
       if (error) {
